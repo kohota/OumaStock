@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html 
+	xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<body>
+	<div id="content" th:fragment="content">
+		<div class="row">
+			<div class="col-lg-12">
+				
+			<div class="panel panel-default">
+					<div class="panel-heading">Liste Articles</div>
+					<div class="panel-body">
+						<table  data-toggle="table" id="table-style" data-url="tables/data2.json" data-row-style="rowStyle">
+						    <thead>
+						    <tr>
+						        <th data-field="id" data-align="right" >Article ID</th>
+						        <th data-field="name" > Nom</th>
+						        <th data-field="prixa" >prix Achats</th>
+						        <th data-field="prixv" >prix Vente</th>
+						        <th data-field="qte" >Quantite Disponible</th>
+						        <th data-field="categorie" >Categorie</th>
+						    </tr>
+						    </thead>
+						    
+						    <tbody>
+						    	<tr th:each="a:${articles}">
+						    		<td th:text="${a.idArticle}"></td>
+						    		<td th:text="${a.nom}"></td>
+						    		<td th:text="${a.prixAchat}"></td>
+						    		<td th:text="${a.prixVente}"></td>
+						    		<td th:text="${a.qteStock}"></td>
+						    		<td th:text="${a.categorie.nom}"></td>
+						    	</tr>
+						    
+						    </tbody>
+						</table>
+						<div class="fixed-table-pagination">
+						 <ul class="nav nav-pills">
+                    		<li th:each="p,status:${nombrePages}">
+                    			<a th:href="@{listerArticle(page=${status.index})}" th:text="${status.count}"></a>
+                    		</li>
+                    	</ul>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			
+			   <div class="modal fade" role="dialog" id="listerCommandesDuClient">
+		<div class="modal-dialog" role="document">
+			<div class="model-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">x</button>
+					<h3>Les articles Commandee:</h3>
+				</div>
+				<div class="model-body">
+
+					<br/>
+					<div class="input-group col-md-12 col-sm-6 col-xs-12">
+											<table id="tableCommandeDuClient"
+												class="table table-responsive table-hover table-bordered">
+												<thead>
+													<tr>
+														<th>ID  commade</th>
+														<th>Date Commande</th>
+														
+														
+
+													</tr>
+												</thead>
+												<tbody>
+														
+												</tbody>
+											</table>
+										</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+			
+			<!-- /.col-->
+		</div>
+		
+	
+
+
+
+</body>
+
+</html>

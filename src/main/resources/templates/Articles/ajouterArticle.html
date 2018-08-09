@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html 
+	xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<body>
+	<div id="content" th:fragment="content">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Formulaire D'ajout</div>
+					<div class="panel-body">
+						<div class="col-md-6">
+							<form role="form" th:action="@{/ajouterArticle}" method="post">
+							
+								<div class="form-group has-success">
+									<label>Identifiant Article</label>
+									<input class="form-control" placeholder="Veuillez saisir l'identifiant" name="idArticle" th:value="${article.idArticle}" />
+								</div>
+								<div class="form-group has-success">
+									<label>Nom article</label>
+									<input class="form-control" placeholder="nom article" name="nom" th:value="${article.nom}" />
+								</div>
+								<div class="form-group has-success">
+									<label>Prix d'achat</label>
+									<input class="form-control" placeholder="prix d'achats" name="prixAchat" th:value="${article.prixAchat}" />
+								</div>
+								<div class="form-group has-success">
+									<label>Prix de Vente</label>
+									<input class="form-control" placeholder="prix de vente" name="prixVente" th:value="${article.prixVente}" />
+								</div>
+								<div class="form-group has-success">
+									<label>Quantite en stock</label>
+									<input class="form-control" placeholder="Quantite en stock" name="qteStock" th:value="${article.qteStock}" />
+								</div>
+								
+								<div class="form-group has-success">
+									<label>Categorie article</label>
+									<select name="categorie" id="categorie"  required="" th:value="${article.categorie}"
+											class="form-control">
+											
+													
+												<option th:each="categorie:${listCategorie}" th:value="${categorie.idCath}" th:text="${categorie.nom}"></option>
+											
+										</select>
+								</div>
+								<div class="form-group ">
+									<button type="submit" class="btn btn-primary">Ajouter Article</button>							
+								
+								</div>	
+							</form></div>
+							
+								
+								
+								
+								
+											</div>
+						
+					</div>
+				</div>
+			</div><!-- /.col-->
+		</div>
+		
+	
+
+
+
+</body>
+
+</html>

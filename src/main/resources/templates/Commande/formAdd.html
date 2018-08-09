@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 	layout:decorator="layout">
+
+<body>
+<div id="content" th:fragment="content">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Formulaire D'ajout</div>
+					<div class="panel-body">
+						<div class="col-md-6">
+							      <form method="post" th:action="@{/ajouterAuPanier}">
+          <div class="alert alert-error" th:if="${param.message}">
+          	 <p>Produit exist deja</p>
+          
+          </div>
+          <div class="form-group ">
+									<label>Categorie article</label>
+									<select name="idArticle" id="idArticle"  required="" 
+											class="form-control">
+											
+													
+												<option th:each="a:${articles}" th:value="${a.idArticle}" th:text="${a.nom}"></option>
+											
+										</select>
+								</div>
+          
+          <div class="form-group">
+            <label for="adresse">Quantite</label>
+            <input class="form-control" id="qte" type="text" name="qte" placeholder="Entrer quantite" />
+          </div>
+         
+         <div class="form-group">
+            <label for="adresse">Remise</label>
+            <input class="form-control" id="remise" type="text" name="remise" placeholder="Entrer remise" />
+          </div>
+          <input type="submit" class="btn btn-primary " value="Ajouter" />
+        </form>
+							
+							</div>
+							
+								
+								
+								
+								
+											</div>
+						
+					</div>
+				</div>
+			</div><!-- /.col-->
+		</div>
+
+
+	
+	
+</body>
+</html>
